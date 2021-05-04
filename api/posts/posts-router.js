@@ -20,7 +20,7 @@ router.get('/', (req,res) => {
 router.get('/:id', (req,res) => {
     Posts.findById(req.params.id)
     .then(foundPost => {
-        if (!foundPost) {
+        if(!foundPost) {
             res.status(404).json({
                 message: `post does not exist`
             })
@@ -81,7 +81,7 @@ router.put('/:id', (req,res) => {
 router.delete('/:id', (req,res) => {
     Posts.remove(req.params.id)
     .then(removePost => {
-        if (!removePost) {
+        if(!removePost) {
             res.status(404).json({
                 message: `does not exist`
             })
@@ -101,7 +101,7 @@ router.delete('/:id', (req,res) => {
 router.get('/:id/comments', (req,res) => {
     Posts.findPostComments(req.params.id)
     .then(posts => {
-        if (posts.length > 0) {
+        if(posts.length > 0) {
             res.status(200).json(posts)
         } else {
             res.status(404).json({
